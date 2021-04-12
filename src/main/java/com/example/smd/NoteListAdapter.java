@@ -53,16 +53,11 @@ public class NoteListAdapter extends ArrayAdapter<Note>
          public void onClick(View v) {
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
             Note note = (Note) v.getTag();
             notes.remove(note);
             filteredNotes.remove(note);
             NotesDbHelper dbHelper = new NotesDbHelper(getContext());
             note.delete(dbHelper.getWritableDatabase());
-=======
-            Integer index = (Integer) v.getTag();
-            notes.remove(index.intValue());  
->>>>>>> parent of 5369698... list view filter
 =======
             Integer index = (Integer) v.getTag();
             notes.remove(index.intValue());  
@@ -78,7 +73,6 @@ public class NoteListAdapter extends ArrayAdapter<Note>
 
       return convertView;
    }
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
    
@@ -122,8 +116,6 @@ public class NoteListAdapter extends ArrayAdapter<Note>
 	}
 	   
    }
-=======
->>>>>>> parent of 5369698... list view filter
 =======
 >>>>>>> parent of 5369698... list view filter
 =======
