@@ -6,12 +6,10 @@ import java.io.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Layout;
-<<<<<<< HEAD
 import android.text.TextWatcher;
 import android.view.ContextMenu;
-=======
->>>>>>> parent of 5369698... list view filter
 import android.view.Gravity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +33,10 @@ public class ListActivity extends BaseActivity
 	ArrayList<Note> notes;
 	int selectedItem;
 	
+	EditText text;
+	ListView list;
+	NoteListAdapter adapter;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -50,7 +52,6 @@ public class ListActivity extends BaseActivity
         selectedItem = -1;        
         createView();
     }
-<<<<<<< HEAD
 
     private EditText createText(){
     	text = new EditText(this);
@@ -70,27 +71,23 @@ public class ListActivity extends BaseActivity
 			}
     		
     	});
-=======
-    
-    private void createView(){
-    	ListView view = new ListView(this);
-    	view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-    	String [] array = new String[notes.size()];
-    	for(int i=0; i < notes.size(); i++){
-    		array[i] = notes.get(i).getContent();
-    	}
->>>>>>> parent of 5369698... list view filter
 
-        NoteListAdapter adapter = new NoteListAdapter(this,notes);
-    	view.setAdapter(adapter);    	
+    	return text;
+    }
+    
+    private ListView createList(){
+    	list = new ListView(this);
+    	list.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+    	    	
+        adapter = new NoteListAdapter(this,notes);
+    	list.setAdapter(adapter);    	
     	
-    	view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
        		public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
     			openNote(position);
     		}
 		});
     	
-<<<<<<< HEAD
     	registerForContextMenu(list);
     	
     	return list;
@@ -108,10 +105,6 @@ public class ListActivity extends BaseActivity
     	layout.addView(createList());
     	
     	setContentView(layout);
-=======
-    	setContentView(view);
-		
->>>>>>> parent of 5369698... list view filter
     }
     
     private void prepareResult(){
