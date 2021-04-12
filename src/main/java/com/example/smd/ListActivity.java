@@ -8,11 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 <<<<<<< HEAD
-<<<<<<< HEAD
 import android.text.TextWatcher;
 import android.view.ContextMenu;
-=======
->>>>>>> parent of 5369698... list view filter
 =======
 >>>>>>> parent of 5369698... list view filter
 import android.view.Gravity;
@@ -54,7 +51,6 @@ public class ListActivity extends BaseActivity
         createView();
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
     private EditText createText(){
     	text = new EditText(this);
@@ -75,8 +71,6 @@ public class ListActivity extends BaseActivity
     		
     	});
 =======
-=======
->>>>>>> parent of 5369698... list view filter
     
     private void createView(){
     	ListView view = new ListView(this);
@@ -85,9 +79,6 @@ public class ListActivity extends BaseActivity
     	for(int i=0; i < notes.size(); i++){
     		array[i] = notes.get(i).getContent();
     	}
-<<<<<<< HEAD
->>>>>>> parent of 5369698... list view filter
-=======
 >>>>>>> parent of 5369698... list view filter
 
         NoteListAdapter adapter = new NoteListAdapter(this,notes);
@@ -99,7 +90,6 @@ public class ListActivity extends BaseActivity
     		}
 		});
     	
-<<<<<<< HEAD
 <<<<<<< HEAD
     	registerForContextMenu(list);
     	
@@ -118,10 +108,6 @@ public class ListActivity extends BaseActivity
     	layout.addView(createList());
     	
     	setContentView(layout);
-=======
-    	setContentView(view);
-		
->>>>>>> parent of 5369698... list view filter
 =======
     	setContentView(view);
 		
