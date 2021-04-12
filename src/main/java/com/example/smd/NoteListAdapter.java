@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,8 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -26,29 +23,17 @@ import android.widget.AbsListView;
 import android.widget.Toast;
 import android.view.LayoutInflater;
 
-public class NoteListAdapter extends ArrayAdapter<Note> implements Filterable
+public class NoteListAdapter extends ArrayAdapter<Note>
 {
    private ArrayList<Note> notes;
-   private ArrayList<Note> filteredNotes;
-   private Filter filter;
 
    public NoteListAdapter(Context context,ArrayList<Note> notes){
       super(context,0,notes);
       this.notes = notes;
-      this.filteredNotes = notes;
    }
-   
-   public Note getItem(int position){
-	   return filteredNotes.get(position);
-   }
-      
-	public int getCount() {
-		return filteredNotes.size();
-	}
 
    public View getView(int position, View convertView,ViewGroup parent) {
       Note note = getItem(position);
-      	  
       if(convertView == null){
          LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          convertView = inflater.inflate(R.layout.note_list_item,parent,false);
@@ -61,16 +46,21 @@ public class NoteListAdapter extends ArrayAdapter<Note> implements Filterable
       check.setChecked(note.isImportant());
 
       Button button = (Button) convertView.findViewById(R.id.note_list_item_button);
-      button.setTag(note);
+      button.setTag(position);
       button.setOnClickListener(new View.OnClickListener() {
 
          @Override
          public void onClick(View v) {
+<<<<<<< HEAD
             Note note = (Note) v.getTag();
             notes.remove(note);
             filteredNotes.remove(note);
             NotesDbHelper dbHelper = new NotesDbHelper(getContext());
             note.delete(dbHelper.getWritableDatabase());
+=======
+            Integer index = (Integer) v.getTag();
+            notes.remove(index.intValue());  
+>>>>>>> parent of 5369698... list view filter
             notifyDataSetChanged();
 
          }
@@ -78,6 +68,7 @@ public class NoteListAdapter extends ArrayAdapter<Note> implements Filterable
 
       return convertView;
    }
+<<<<<<< HEAD
    
    @Override
 	public Filter getFilter() {
@@ -119,4 +110,6 @@ public class NoteListAdapter extends ArrayAdapter<Note> implements Filterable
 	}
 	   
    }
+=======
+>>>>>>> parent of 5369698... list view filter
 }
